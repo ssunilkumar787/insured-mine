@@ -1,0 +1,11 @@
+{
+  "info": { "name": "Node Policy Assessment", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:3000" }],
+  "item": [
+    { "name": "Health", "request": { "method": "GET", "url": "{{baseUrl}}/api/health" } },
+    { "name": "Upload CSV/XLSX", "request": { "method": "POST", "header": [], "body": { "mode": "formdata", "formdata": [{ "key": "file", "type": "file", "src": "sample-data/policies.csv" }] }, "url": "{{baseUrl}}/api/upload" } },
+    { "name": "Search Policy By Username", "request": { "method": "GET", "url": "{{baseUrl}}/api/policies/search/Lura" } },
+    { "name": "Aggregate Policy By User", "request": { "method": "GET", "url": "{{baseUrl}}/api/policies/aggregate-by-user" } },
+    { "name": "Schedule Message", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"message\": \"Send policy renewal reminder\",\n  \"day\": \"2026-10-01\",\n  \"time\": \"15:30\"\n}" }, "url": "{{baseUrl}}/api/messages/schedule" } }
+  ]
+}
